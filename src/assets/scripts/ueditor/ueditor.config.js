@@ -51,7 +51,7 @@
         //,themePath:URL +"themes/"
 
         ,zIndex :1049     //编辑器层级的基数,默认是900
-        ,autoFloatEnabled:false
+        ,autoFloatEnabled:true
         //针对getAllHtml方法，会在对应的head标签中增加该编码设置。
         //,charset:"utf-8"
 
@@ -79,7 +79,7 @@
         //,indentValue:'2em'
 
         ,initialFrameWidth:'100%'  //初始化编辑器宽度,默认1000
-        ,initialFrameHeight:'100%'  //初始化编辑器高度,默认320
+        ,initialFrameHeight:'320'  //初始化编辑器高度,默认320
 
         //,readonly : false //编辑器初始化结束后,编辑区域是否是只读的，默认是false
 
@@ -271,12 +271,12 @@
         //scaleEnabled
         //是否可以拉伸长高,默认true(当开启时，自动长高失效)
         //,scaleEnabled:false
-        //,minFrameWidth:800    //编辑器拖动时最小宽度,默认800
+        // ,minFrameWidth:1000    //编辑器拖动时最小宽度,默认800
         //,minFrameHeight:220  //编辑器拖动时最小高度,默认220
 
         //autoFloatEnabled
         //是否保持toolbar的位置不动,默认true
-        ,autoFloatEnabled:false
+        // ,autoFloatEnabled:true
         //浮动时工具栏距离浏览器顶部的高度，用于某些具有固定头部的页面
         //,topOffset:30
         //编辑器底部距离工具栏高度(如果参数大于等于编辑器高度，则设置无效)

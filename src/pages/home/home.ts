@@ -1,24 +1,84 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+// import jquery from 'jquery';
 declare var UE;
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
 export class HomePage {
 
-  html;
+    html;
 
-  constructor(public navCtrl: NavController) {
-    this.initEditor();
-  }
+    constructor(public navCtrl: NavController) {
+        this.initEditor();
+        //  this.listen();
+    }
 
-  initEditor() {
-    var ue = UE.getEditor('container');
-    ue.ready(function () {
-      //设置编辑器的内容
-      ue.setContent(`<p style="text-align:right;line-height:17px">
+
+
+    listen() {
+        var touchObj = document.getElementById("ueditor_0");
+        var distance1;
+        touchObj.addEventListener("touchstart", function (e) {
+            // if(e.touches.length>1){
+
+            // }else{
+            //     return;
+            // }
+alert();
+            console.log("touchstart");
+            var point1 = e.touches[0],
+                point2 = e.touches[1];
+            var xLen = Math.abs(point2.pageX - point1.pageX),
+                yLen = Math.abs(point2.pageY - point1.pageY);
+            distance1 = getDistance(xLen, yLen);
+        })
+
+        touchObj.addEventListener("touchmove", function (e) {
+            // if (e.touches.length > 1) {
+
+            // } else {
+            //     return;
+            // }
+            console.log("touchmove");
+            var point1 = e.touches[0],
+                point2 = e.touches[1];
+            var xLen = Math.abs(point2.pageX - point1.pageX),
+                yLen = Math.abs(point2.pageY - point1.pageY);
+            var distance2 = getDistance(xLen, yLen);
+
+            scaleChange(distance1, distance2);
+        })
+
+        touchObj.addEventListener("touchend", function (e) {
+
+        })
+
+        function getDistance(xLen, yLen) {
+            return Math.sqrt(xLen * xLen + yLen * yLen);
+        }
+
+        function scaleChange(dis1, dis2) {
+            console.log("distance1:", dis1);
+            console.log("distance2:", dis2);
+            var scale = dis2 / dis1;
+            console.log("scale:", scale);
+
+            //var iframe = (<HTMLIFrameElement>document.getElementById("ueditor_0")).contentDocument;
+            //var iframeBody = touchObj.getElementsByTagName("body")[0];
+            //iframeBody.style.transform = "scale(" + scale + ")";
+        }
+    }
+
+
+    initEditor() {
+        var ue = UE.getEditor('container');
+        ue.ready(function () {
+            //设置编辑器的内容
+            
+            ue.setContent(`<p style="text-align:right;line-height:17px">
     <span style="font-family: 宋体">湘质监统编</span>
 </p>
 <p style="text-align:right;line-height:17px">
@@ -38,7 +98,7 @@ export class HomePage {
         <tr style=";height:35px" class="firstRow">
             <td width="120" style="border-color: windowtext; border-width: 1px; padding: 0px 7px;" height="35">
                 <p style="text-align:center">
-                    <span style="font-size: 15px;font-family: 宋体">监督登记号：</span>
+                    <span style="font-size: 15px;font-family: 宋体">登记号：</span>
                 </p>
             </td>
             <td width="140" style="border-top-color: windowtext; border-top-width: 1px; border-left-style: none; border-bottom-color: windowtext; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px 7px;" height="35"></td>
@@ -1033,11 +1093,8 @@ export class HomePage {
 <p>
     <br/>
 </p>`);
-      // //获取html内容，返回: <p>hello</p>
-      // var html = ue.getContent();
-      // //获取纯文本内容，返回: hello
-      // var txt = ue.getContentTxt();
-    });
-  }
+
+        });
+    }
 
 }
